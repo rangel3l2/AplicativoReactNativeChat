@@ -1,12 +1,11 @@
 import styles from "../camera/styles";
 import { View, Text, TouchableOpacity, ImageBackground} from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context";
-import ButtonCustom from "../../components/button/Button";
 import { useNavigation } from "@react-navigation/native";
-import { DataContext } from '../../contexts/DataContext';
-import React, { useContext, useState } from 'react';
+import React, {useState } from 'react';
 import { NativeStackNavigationProp} from "@react-navigation/native-stack";
 import { RootStackParmams } from "../../navigation/StackNavigator";
+import ButtonCustom from "../../components/button/button";
 
 export default function PrintedCamera({photo, setPhoto}) {
 

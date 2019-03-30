@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList} from 'react-native';
 import MessageContext from '../../contexts/DataContext';
-import { data } from '../../MockData/mockedImage';
 import MessageComponent from '../messageItem/MessageComponent';
 
 

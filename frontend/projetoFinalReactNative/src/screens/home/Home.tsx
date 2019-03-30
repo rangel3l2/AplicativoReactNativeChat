@@ -22,11 +22,6 @@ type Params = {
   token : string
 }
 
-interface HomeProps {
-  profile: ProfileInterface ;
- 
-}
-
 
 
 const Home  = () => {

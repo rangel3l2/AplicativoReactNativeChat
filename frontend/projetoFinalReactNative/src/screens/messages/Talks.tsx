@@ -2,15 +2,15 @@ import { View, Text, ImageBackground, TouchableOpacity} from 'react-native'
 import React,{FC, useEffect, useContext} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { useNavigation, useRoute,  } from '@react-navigation/native';
-import MessageFlatList from '../../components/messageFlatList/MessageFlatListRenderItem';
+import  Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation, useRoute} from '@react-navigation/native';
 import { RootStackParmams } from '../../navigation/StackNavigator';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { DataContext } from '../../contexts/DataContext';
+import MessageFlatList from '../../components/messageFlatList/MessageFlatListRenderItem';
 
-// const io = require('socket.io-client');
-// const socket = io('http://192.168.1.107:5000');
+const io = require('socket.io-client');
+const socket = io('http://10.8.38.2:5000');
 
 type Params = {
   takepicture : boolean;
@@ -39,9 +39,9 @@ const Talks =() => {
         dateTime : date.toString()
 
       }]
-
+     
    )},[])
-
+  
 
    /**@setMessages */
    
@@ -56,29 +56,31 @@ const Talks =() => {
  
    /**@clienteSide websocket to client*/
 
+useEffect(()=>{
+socket.on("connect", () => {
+   socket.send("User connected!")
+console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+});
+ socket.on("connect", (data) => {
+   console.log(data)
 
-// socket.on("connect", () => {
-//   socket.send("User connected!")
-// //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-// });
-// socket.on("connect", (data) => {
-//   console.log(data)
-
-// //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-// });
-// socket.on("message", () => {
+console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+ });
+ socket.on("message", () => {
  
-//   socket.emit('sou emo')
-// //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-// });
+  socket.emit('message',messages)
+console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+});
 
-// socket.on("message", (data) => {
+ socket.on("message", (data) => {
 
-//   console.log('texto recebido'+data)
-// //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-// });
+   console.log('texto recebido'+data)
 
+  setMessages(data)
 
+ });
+
+},[]);
   
 
   return (
