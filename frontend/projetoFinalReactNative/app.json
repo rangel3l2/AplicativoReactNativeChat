@@ -1,0 +1,71 @@
+{
+  "expo": {
+    "name": "projetofinal",
+    "slug": "projetofinal",
+    "scheme": "projetofinal",
+    
+    "plugins": [
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "1089348385307020",
+          "clientToken": "6c84a747fb463bb82953fbd0f774b71e",
+          "displayName": "projetofinal"
+        }
+      ]
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/1d99e53d-20d8-4476-b436-4ffce8d572e5"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "SKAdNetworkItems": [
+          {
+            "SKAdNetworkIdentifier": "v9wttpbfk9.skadnetwork"
+          },
+          {
+            "SKAdNetworkIdentifier": "n38lu8286q.skadnetwork"
+          }
+        ]
+      }
+    },
+    "android": {
+      "softwareKeyboardLayoutMode": "pan",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.rangel3l.projetofinal",
+      "permissions": [
+        "android.permission.INTERNET"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1d99e53d-20d8-4476-b436-4ffce8d572e5",
+        "currentFullName": "@rangel3l/projetofinal",
+        "originalFullName": "@rangel3l/projetofinal"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
+  }
+}
