@@ -1,7 +1,7 @@
 import { View, Text} from 'react-native'
 import React from 'react'
 import TextInputCustom from './TextInput'
-import styles from '../../assets/css/styles'
+import styles from './styles'
 
 
 const FormCadastro = ({setUser, user}) => {

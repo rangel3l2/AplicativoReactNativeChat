@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import BtnRedeSocial from './BtnRedeSocial'
-import styles from '../../assets/css/styles'
+import styles from './styles'
 
 const LoginRedeSocial = ({handleSignIn, logInFacebook}) => {
   return (

@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         color:'#dde2eb',
         fontWeight:"800",
         fontFamily:'Roboto',
-        padding:1,
+        padding:1,       
         marginBottom:'6%'
 
 

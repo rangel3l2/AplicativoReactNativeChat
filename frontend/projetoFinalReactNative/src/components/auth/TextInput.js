@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput} from 'react-native'
 import React, {useState,useEffect} from 'react'
-import styles from '../../assets/css/styles';
+import styles from './styles';
 import { FontAwesome } from '@expo/vector-icons';
 const TextInputCustom = ({keyboardType, placeholder,secureTextEntry, setUser, title, user}) => {
   const [modePassword, Setmodepassword] = useState(secureTextEntry?secureTextEntry:false)
