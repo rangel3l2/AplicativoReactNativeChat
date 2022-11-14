@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import Auth from '../screens/auth/Auth';
 import Home from '../screens/home/Home';
+import CameraExpo from '../screens/camera/Camera';
 
 
 const Stack = createNativeStackNavigator()
@@ -13,7 +14,8 @@ const StackNavigator = () => {
           <Stack.Group>
           
             <Stack.Screen options={{headerShown: false}} name="Auth" component={Auth}/> 
-            <Stack.Screen  options={{headerShown: false}} name="Home" component={Home}/>          
+            <Stack.Screen  options={{headerShown: false}} name="Home" component={Home}/>
+            <Stack.Screen  options={{headerShown: false}} name="Camera" component={CameraExpo}/>           
                        
               
           </Stack.Group>

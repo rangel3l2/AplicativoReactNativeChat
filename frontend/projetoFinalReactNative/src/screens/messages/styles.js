@@ -7,17 +7,22 @@ const styles = StyleSheet.create({
         
       
     },
-    background:{
+    ViewBG:{
         alignSelf:'center',
-        width:'95%',
-        height:'95%',
+        width:'100%',
+        height:'90%',
+    },
+    background:{
+       
+        width:'100%',
+        height:'100%',
         resizeMode:'cover',
         borderRadius:20
     },
     messageView:{
         borderRadius:20,
-        width:'100%',
-        height:'95%',
+        width:'95%',
+        
         
         // backgroundColor:'#fcfcfc'
     },
@@ -28,7 +33,7 @@ const styles = StyleSheet.create({
         
     },
     sendView:{
-        width:'98%',
+        width:'95%',
         elevation:2,
         alignSelf:'center',
         borderRadius:20,
