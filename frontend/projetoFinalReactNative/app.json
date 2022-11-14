@@ -2,12 +2,7 @@
   "expo": {
     "name": "projetofinal",
     "slug": "projetofinal",
-    "scheme": "projetofinal",
-    
-  
-
-    
-    
+    "scheme": "com.rangel3l.projetofinal",
     "plugins": [
       [
         "react-native-fbsdk-next",
@@ -15,10 +10,9 @@
           "appID": "1089348385307020",
           "clientToken": "6c84a747fb463bb82953fbd0f774b71e",
           "displayName": "projetofinal"
-          
         }
       ]
-    ],    
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -45,10 +39,10 @@
             "SKAdNetworkIdentifier": "n38lu8286q.skadnetwork"
           }
         ]
-      }
+      },
+      "bundleIdentifier": "com.rangel3l.projetofinal"
     },
     "android": {
-      
       "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

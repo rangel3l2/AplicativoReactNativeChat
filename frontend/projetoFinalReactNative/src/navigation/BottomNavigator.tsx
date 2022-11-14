@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React,{FC} from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Profile from '../screens/profile/Profile';

@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">projetofinal</string>
+  <string name="expo_splash_screen_resize_mode" translatable="false">contain</string>
+  <string name="expo_splash_screen_status_bar_translucent" translatable="false">false</string>
+  <string name="facebook_app_id">1089348385307020</string>
+  <string name="facebook_client_token">6c84a747fb463bb82953fbd0f774b71e</string>
+  <string name="fb_login_protocol_scheme">fb1089348385307020</string>
+</resources>

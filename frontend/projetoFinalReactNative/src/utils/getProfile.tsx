@@ -19,7 +19,7 @@ const  getProfile = async(token) => {
     const response = await fetch(`https://www.googleapis.com/oauth2/v2/userinfo?alt=json&access_token=${token}`)
     
     const userInfo = await response.json()
-    console.log(userInfo)
+   // console.log(userInfo)
    return userInfo
     }
 }

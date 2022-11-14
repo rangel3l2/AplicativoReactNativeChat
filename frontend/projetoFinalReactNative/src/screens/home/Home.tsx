@@ -39,7 +39,7 @@ const Home  = () => {
       const route = useRoute()
       
       const {token} =route?.params as Params ?route?.params as Params :  paramsGoogle as Params ;  
-      console.log('teste',token)
+     // console.log('teste',token)
    
     async function loadProfile(){
         
@@ -52,13 +52,13 @@ const Home  = () => {
     },[])
      
       return (
-        <SafeAreaView style = {styles.container}>
+        
           <BottomNavigator 
           profile = {profile}
           
           
           />
-        </SafeAreaView>
+     
       );
     }
 
