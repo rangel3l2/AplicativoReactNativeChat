@@ -39,5 +39,18 @@ const styles = StyleSheet.create({
         marginTop: '5%',
         
       },
+      versionText:{
+        position: 'absolute',
+        bottom:0,
+        alignSelf:'center',
+        
+        
+      },
+      logoutView:{
+        padding:5,
+        alignSelf:'center',        
+        alignItems:'center',
+        
+      }
 })
 export default styles

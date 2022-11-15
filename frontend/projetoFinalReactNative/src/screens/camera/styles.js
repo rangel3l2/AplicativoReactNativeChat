@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import {SendButton} from 'react-native-fbsdk-next';
 
 const styles = StyleSheet.create({
     container: {
@@ -7,22 +8,67 @@ const styles = StyleSheet.create({
     },
     camera: {
       flex: 1,
+      borderRadius: 20
     },
     buttonContainer: {
       flex: 1,
       flexDirection: 'row',
       backgroundColor: 'transparent',
-      margin: 64,
+      marginBottom:20,     
+      justifyContent: 'space-around',
+      alignItems: 'center',
+    
+      width:'100%',
+      
+     
     },
-    button: {
+    buttonCamera: {
       flex: 1,
       alignSelf: 'flex-end',
-      alignItems: 'center',
+      marginBottom:15,
+      marginLeft:'5%'
+     
     },
+    buttonCircle: {
+        flex: 1,
+        alignSelf: 'flex-end',
+        marginLeft:'-25%'
+        
+      },
     text: {
       fontSize: 24,
       fontWeight: 'bold',
       color: 'white',
+      alignSelf:'center'
     },
+    textFooter:{
+        fontSize: 15,        
+        color: 'white',
+        alignSelf:'center'
+    },
+    preview:{
+        alignSelf:'stretch',
+        flex:1,
+        borderRadius:10
+   
+        
+        
+        
+
+        
+        
+
+    },
+    sendButton:{
+        flex:1,
+       alignContent:'space-between',
+       justifyContent:'space-between'
+       
+      
+        
+        
+        
+        
+    }
   });
   export default styles;

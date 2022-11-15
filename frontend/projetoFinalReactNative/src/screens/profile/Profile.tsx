@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
-import React,{useEffect, useState, FC} from 'react';
-import { Text, View, Image, ImageBackground, } from 'react-native';
+import React,{useEffect, useState, FC, } from 'react';
+import { Text, View, Image, ImageBackground,TouchableOpacity} from 'react-native';
 import stylesGeneral from '../../components/auth/styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card } from '@rneui/themed';
@@ -27,6 +27,7 @@ interface HomeProps {
  
 }
 const Profile = () => {
+  const navigation = useNavigation()
   const route = useRoute()
   const profile = route.params as profile
   let [fontsLoaded] = useFonts({
@@ -40,7 +41,8 @@ const Profile = () => {
   }
 
    
- 
+  const xmas = new Date();
+  const year = xmas.getFullYear() ; // returns 95
 
   return (
     <SafeAreaView style = {[styles.container]}>
@@ -73,8 +75,30 @@ const Profile = () => {
           />
       </View>
       <Text style ={{fontFamily: 'Roboto_700Bold'}}> sua conta foi criada em {profile.locale}</Text>
-    
+      <Card.Divider style={{height:20}}/>
+      <View style= {styles.cardContainer}>
+        <TouchableOpacity onPress={()=>{navigation.navigate('Termos_de_uso' as never) }}>
+          <Text style ={{fontFamily: 'Roboto_700Bold'}}>Termos de uso</Text>
+        </TouchableOpacity>
+        <Ionicons 
+            name="receipt" 
+            size={24} 
+          />
+      </View>
+      
       </Card>
+      
+      <TouchableOpacity onPress={()=>{navigation.navigate('Auth' as never) }}>
+      <View style = {styles.logoutView}>
+      <Ionicons 
+            name="log-out" 
+            size={24} 
+          />
+          <Text style ={{fontFamily: 'Roboto_700Bold'}}>Sair da conta</Text>
+          </View>
+        </TouchableOpacity>
+     
+      <Text style={styles.versionText}>Versão 1.0.0({year})</Text>
       
    
     </SafeAreaView>

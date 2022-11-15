@@ -4,7 +4,7 @@ import React from 'react';
 import Auth from '../screens/auth/Auth';
 import Home from '../screens/home/Home';
 import CameraExpo from '../screens/camera/Camera';
-
+import TermoUso from '../screens/termo_de_uso/TermoUso';
 
 const Stack = createNativeStackNavigator()
 const StackNavigator = () => {
@@ -15,7 +15,8 @@ const StackNavigator = () => {
           
             <Stack.Screen options={{headerShown: false}} name="Auth" component={Auth}/> 
             <Stack.Screen  options={{headerShown: false}} name="Home" component={Home}/>
-            <Stack.Screen  options={{headerShown: false}} name="Camera" component={CameraExpo}/>           
+            <Stack.Screen  options={{headerShown: false}} name="Camera" component={CameraExpo}/> 
+            <Stack.Screen  options={{headerShown: false}} name="Termos_de_uso" component={TermoUso}/>            
                        
               
           </Stack.Group>
