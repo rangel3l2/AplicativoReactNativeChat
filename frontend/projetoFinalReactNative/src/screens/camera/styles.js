@@ -39,7 +39,11 @@ const styles = StyleSheet.create({
       fontSize: 24,
       fontWeight: 'bold',
       color: 'white',
-      alignSelf:'center'
+      alignSelf:'center',
+      marginTop:-5,
+     
+      
+      
     },
     textFooter:{
         fontSize: 15,        
@@ -69,6 +73,30 @@ const styles = StyleSheet.create({
         
         
         
+    },
+    circleButton:{
+      
+      alignSelf:'center',
+      borderWidth:1,
+      borderColor:'rgba(0,0,0,0.2)',
+      alignItems:'center',
+      textAlign:'center',
+      justifyContent:'center',
+      width:35,
+      height:35,
+      elevation:5,
+      marginTop:5,
+      
+      borderWidth:1,
+      borderRadius:50,
+    },
+    exitView:{
+      backgroundColor:'#f1f1f1',
+      flex:1,
+      alignItems:'center',
+      textAlign:'center',
+      justifyContent:'center',
+
     }
   });
   export default styles;

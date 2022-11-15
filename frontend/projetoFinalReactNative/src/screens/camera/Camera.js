@@ -4,17 +4,16 @@ import { Button, StyleSheet, Text, TouchableOpacity, View, Image, ImageBackgroun
 import styles from './styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonCustom from '../../components/button/button';
-export default function CameraExpo() {
+import ButtonCustom from '../../components/button/Button';
+
+export default function CameraExpo({navigation}) {
   let cameraRef = useRef()
  
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [photo, setPhoto] = useState()
-  useEffect(()=>{
+  
 
-
-  },[])
   if (!permission) {
     // Camera permissions are still loading
     return <View />;
@@ -60,17 +59,19 @@ export default function CameraExpo() {
       <SafeAreaView style = {styles.container}>
         <ImageBackground style={styles.preview} source={{uri: "data:image/jpg;base64," + photo.base64 }}>
           <View style={styles.sendButton}>
-          <ButtonCustom
-          title = {''}
-          size={60}
-           icon={'trash-bin-outline'} 
-           color = {'#34c3eb'}
-          />
+         
+      <TouchableOpacity style={styles.circleButton} onPress={()=>{
+       setPhoto(undefined)
+        navigation.goBack()}}>
+    <Text style={styles.text}>x</Text>
+    </TouchableOpacity>
+          
            <ButtonCustom
+         
           title = {''}
           size={60}
            icon={'send'} 
-           color = {'#34c3eb'}
+           color = {'#433ddb'}
           />
 
           </View>
@@ -80,10 +81,19 @@ export default function CameraExpo() {
   }
 
   return (
+
     <View style={styles.container}>
+    
+      <View style= {{backgroundColor:'black',}}>
+      <TouchableOpacity style={styles.circleButton}  onPress={()=>{      
+        navigation.goBack()}}>
+    <Text style={styles.text}>x</Text>
+    </TouchableOpacity>
+          </View>
+    
       <Camera onCameraReady={()=>{}} style={styles.camera} type={type} ref={cameraRef}>
         <View style={styles.buttonContainer}>
-          
+        
           <TouchableOpacity style={styles.buttonCamera} onPress={toggleCameraType}>
           <Ionicons 
             name="camera-reverse-outline" 

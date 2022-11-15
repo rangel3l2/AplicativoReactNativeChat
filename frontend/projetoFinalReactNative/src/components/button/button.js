@@ -1,12 +1,17 @@
 
 import { View, Text,TouchableOpacity, StyleSheet } from 'react-native'
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Ionicons  } from '@expo/vector-icons'
-
-export default function ButtonCustom({title,onPress, icon, color, size}) {
-    
+import * as ScreenOrientation from 'expo-screen-orientation';
+export default function ButtonCustom({title,onPress, icon, color, size, style}) {
+    useEffect(()=>{
+      async()=>{ 
+        let realOrientation  = await  ScreenOrientation.getOrientationAsync()
+        console.log(realOrientation)}
+      
+    },[])
   return (
-    <TouchableOpacity onPress={onPress} style={styles.button}>
+    <TouchableOpacity onPress={onPress} style={[styles.button,{style}]}>
         <Ionicons  name = {icon} size={size} color={color}/>
 
         
