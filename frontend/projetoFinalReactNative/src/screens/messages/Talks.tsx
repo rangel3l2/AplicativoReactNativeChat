@@ -29,12 +29,7 @@ interface HomeProps {
 const Talks  = ({profile}) => {
   const navigation = useNavigation()
 
-  const [type, setType] = useState(CameraType.back);
-  const [permission, requestPermission] = Camera.useCameraPermissions();
-  
-  function toggleCameraType() {
-    setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
-  }
+
  
  
   return (

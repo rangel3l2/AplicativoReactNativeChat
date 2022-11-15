@@ -3,8 +3,7 @@ import { useState,useEffect, useRef} from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View, Image, ImageBackground } from 'react-native';
 import styles from './styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonCustom from '../../components/button/Button';
+import PrintedCamera from '../printedCamera/PrintedCamera';
 
 export default function CameraExpo({navigation}) {
   let cameraRef = useRef()
@@ -23,7 +22,7 @@ export default function CameraExpo({navigation}) {
     // Camera permissions are not granted yet
     return (
       <View style={styles.container}>
-        <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
+        <Text style={{ textAlign: 'center' }}>Precisamos de sua permissão para usar a camera</Text>
         <Button onPress={requestPermission} title="grant permission" />
       </View>
     );
@@ -56,27 +55,9 @@ export default function CameraExpo({navigation}) {
     }
 
     return(
-      <SafeAreaView style = {styles.container}>
-        <ImageBackground style={styles.preview} source={{uri: "data:image/jpg;base64," + photo.base64 }}>
-          <View style={styles.sendButton}>
-         
-      <TouchableOpacity style={styles.circleButton} onPress={()=>{
-       setPhoto(undefined)
-        navigation.goBack()}}>
-    <Text style={styles.text}>x</Text>
-    </TouchableOpacity>
-          
-           <ButtonCustom
-         
-          title = {''}
-          size={60}
-           icon={'send'} 
-           color = {'#433ddb'}
-          />
-
-          </View>
-        </ImageBackground>
-      </SafeAreaView>
+      <PrintedCamera
+      photo={photo}     
+      setPhoto={setPhoto}/>
     ) 
   }
 
@@ -86,7 +67,7 @@ export default function CameraExpo({navigation}) {
     
       <View style= {{backgroundColor:'black',}}>
       <TouchableOpacity style={styles.circleButton}  onPress={()=>{      
-        navigation.goBack()}}>
+        navigation.navigate('Messages')}}>
     <Text style={styles.text}>x</Text>
     </TouchableOpacity>
           </View>
