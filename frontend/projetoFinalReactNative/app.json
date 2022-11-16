@@ -3,6 +3,7 @@
     "name": "projetofinal",
     "slug": "projetofinal",
     "scheme": "com.rangel3l.projetofinal",
+    
     "plugins": [
       [
         "react-native-fbsdk-next",

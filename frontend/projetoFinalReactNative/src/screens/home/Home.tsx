@@ -32,6 +32,18 @@ interface HomeProps {
 
 
 const Home  = () => {
+  var ws = new WebSocket('http://192.168.1.107:5000')
+
+     
+    
+    ws.onopen = () => {
+        // connection opened
+        ws.send('User connected!');  // send a message
+      }
+      ws.onmessage = (e) => {
+        // a message was received
+        console.log(e.data);
+      }
   const [profile, setProfile] = useState({} as profile)
     const  nada = {
         token : 'nada'

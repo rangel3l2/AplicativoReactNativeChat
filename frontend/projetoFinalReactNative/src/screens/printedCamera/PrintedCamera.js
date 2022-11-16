@@ -1,27 +1,12 @@
 import styles from "../camera/styles";
-import { View, Text, TouchableOpacity, ImageBackground, SwitchIOS} from 'react-native'
+import { View, Text, TouchableOpacity, ImageBackground} from 'react-native'
 import React from 'react'
 import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonCustom from "../../components/button/Button";
 import { useNavigation } from "@react-navigation/native";
 export default function PrintedCamera({photo, setPhoto}) {
     const navigation = useNavigation()
-    var ws = new WebSocket('http://192.168.1.107:5000')
-
-    ws.onopen = ('connect',()=>{
-        ws.send("usuario entrou")
-    })
-
-    
-    
-    ws.onopen = () => {
-        // connection opened
-        ws.send('something');  // send a message
-      }
-      ws.onmessage = (e) => {
-        // a message was received
-        console.log(e.data);
-      }
+   
       
   return (
     <SafeAreaView style = {styles.container}>
