@@ -9,6 +9,7 @@ import {firebase} from "../../../config";
 import { LoginManager, AccessToken } from "react-native-fbsdk-next";
 import 'expo-dev-client'
 import Logo from "../../components/auth/Logo";
+import { useAuth } from "../../hooks/AuthProvider";
 
 import authWithGoogle from "../../utils/authWithGoogle";
 type AuthResponse = {
@@ -17,10 +18,18 @@ type AuthResponse = {
         access_token: string;
     }
 
-
-    
 }
+type auth = {
+    token : string
+    useToken:()=>void
+    useAuth:()=>unknown
+    
+
+        
+    }
+
 const Auth = ({navigation})=>{
+   
   //facebook login
 const [initializing, setInitializing] = useState(true)
 const [user1, setUser1] = useState()
@@ -95,7 +104,8 @@ return subscriber;
         const {type, params} = await auth_session;
         if(type === 'success'){
                 let token = {token : params.access_token}
-                navigation.push("Home",{token : params.access_token})
+                 
+                navigation.push("Home")
         }
        
     }

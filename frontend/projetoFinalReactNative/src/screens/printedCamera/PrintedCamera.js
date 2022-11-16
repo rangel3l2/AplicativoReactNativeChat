@@ -6,7 +6,10 @@ import ButtonCustom from "../../components/button/Button";
 import { useNavigation } from "@react-navigation/native";
 export default function PrintedCamera({photo, setPhoto}) {
     const navigation = useNavigation()
-   
+    const sendPic = () =>{
+    navigation.navigate('Messages',{data:"data:image/jpg;base64," + photo.base64})
+
+   }
       
   return (
     <SafeAreaView style = {styles.container}>
@@ -20,7 +23,8 @@ export default function PrintedCamera({photo, setPhoto}) {
     </TouchableOpacity >
           
            <ButtonCustom
-         
+          params= {"data:image/jpg;base64," + photo.base64}
+          onPress = {sendPic}
           title = {''}
           size={60}
            icon={'send'} 

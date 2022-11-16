@@ -5,14 +5,53 @@ import styles from './styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation, useRoute,  } from '@react-navigation/native';
 
+const io = require('socket.io-client');
+const socket = io('http://192.168.1.107:5000');
 
 
+type profile = {
+  email : string;
+  family_name: string;
+  given_name: string;
+  locale: string;
+  name: string;
+  picture: string;
 
 
-
-const Talks  = ({profile}) => {
-
+}
+ type message ={
+  nome: string,
+  url:string
+  time?: Date,
   
+
+
+
+}
+
+const Talks  = () => {
+  const navigation = useNavigation()
+  const route = useRoute()
+  
+ 
+  console.log(route.params)
+ 
+  useEffect(()=>{
+    const profile = route.params as profile 
+
+    // client-side
+  socket.on("connect", () => {
+    
+  //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+});
+socket.on("message", () => {
+  socket.send("User connected!")
+//console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+});
+
+  },[])
+  
+ 
 
  
  
@@ -25,7 +64,7 @@ const Talks  = ({profile}) => {
       <View style={styles.messageView}></View>
       <View style={styles.sendView}>
       {/* <Camera  type={type}> */}
-      <TouchableOpacity onPress={()=>{navigation.navigate("Camera")}} style={styles.cameraView}>
+      <TouchableOpacity onPress={()=>{navigation.navigate("Camera" as never)}} style={styles.cameraView}>
       
 
       

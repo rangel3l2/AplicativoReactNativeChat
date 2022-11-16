@@ -26,13 +26,14 @@ const Tab = createBottomTabNavigator();
 const BottomNavigator : FC<HomeProps> = ({profile}) => {
   return(
     <Tab.Navigator
+    initialRouteName='Conversas'
     backBehavior='history' 
     screenOptions=
       {{
       tabBarStyle: { height: "10%"},
       }}>
      <Tab.Screen
-       
+      
       name="Conversas" 
       component={Talks}
       initialParams = {profile}
@@ -50,15 +51,7 @@ const BottomNavigator : FC<HomeProps> = ({profile}) => {
       }}       
         />   
 
-      {/* <Tab.Screen 
-      name="Status"
-      component={Status}
-      
-      options=
-      {{
-        headerShown: false
-      }}  />     */}
-    
+   
       <Tab.Screen 
       name="Perfil"       
       component={Profile}
