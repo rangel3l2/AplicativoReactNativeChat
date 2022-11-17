@@ -2,10 +2,24 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     container: {
-        elevation:0,       
-        flex: 1,
+        elevation:5, 
+        flex:1,      
+        
         
       
+        
+      
+    },
+    containerMsg: { 
+       
+       
+       
+     
+      
+       
+
+       
+              
     },
     ViewBG:{
         alignSelf:'center',
@@ -13,11 +27,16 @@ const styles = StyleSheet.create({
         height:'90%',
     },
     background:{
-       
+        flex:1,
         width:'100%',
         height:'100%',
         resizeMode:'cover',
-        borderRadius:20
+        borderRadius:20,
+        alignItems:'flex-end',
+        alignContent:'flex-end',
+        justifyContent:'flex-end',
+
+        
     },
     messageView:{
         borderRadius:20,

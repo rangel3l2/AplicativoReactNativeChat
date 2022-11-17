@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native';
 import BottomNavigator from '../../navigation/BottomNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -8,6 +8,7 @@ import styles from '../../components/auth/styles';
 import paramsGoogle  from '../../MockData/tokenGoogle'
 import MockData from '../../MockData/profile';
 import getProfile from '../../utils/getProfile';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 
 
@@ -32,9 +33,10 @@ interface HomeProps {
 
 
 const Home  = () => {
-  var ws = new WebSocket('http://192.168.1.107:5000')
 
-     
+  const {token,setToken}= useContext(AuthContext)
+  
+  var ws = new WebSocket('http://192.168.1.107:5000')    
     
     ws.onopen = () => {
         // connection opened
@@ -50,7 +52,7 @@ const Home  = () => {
     }
       const route = useRoute()
       
-      const {token} =route?.params as Params ?route?.params as Params :  paramsGoogle as Params ;  
+      //const {token} =route?.params as Params ?route?.params as Params :  paramsGoogle as Params ;  
      // console.log('teste',token)
    
     async function loadProfile(){

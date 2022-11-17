@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React,{useContext, useEffect, useState} from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "../../components/auth/styles";
 import EnviarCounteudo from "../../components/auth/EnviarCounteudo";
@@ -9,9 +9,10 @@ import {firebase} from "../../../config";
 import { LoginManager, AccessToken } from "react-native-fbsdk-next";
 import 'expo-dev-client'
 import Logo from "../../components/auth/Logo";
-import { useAuth } from "../../hooks/AuthProvider";
+
 
 import authWithGoogle from "../../utils/authWithGoogle";
+import { AuthContext } from "../../contexts/AuthProvider";
 type AuthResponse = {
     type: string
     params : {
@@ -19,17 +20,11 @@ type AuthResponse = {
     }
 
 }
-type auth = {
-    token : string
-    useToken:()=>void
-    useAuth:()=>unknown
-    
 
-        
-    }
+
 
 const Auth = ({navigation})=>{
-   
+const {token,setToken}= useContext(AuthContext)
   //facebook login
 const [initializing, setInitializing] = useState(true)
 const [user1, setUser1] = useState()
@@ -103,8 +98,8 @@ return subscriber;
         const auth_session = await authWithGoogle() as AuthResponse;
         const {type, params} = await auth_session;
         if(type === 'success'){
-                let token = {token : params.access_token}
-                 
+                
+                 setToken(params.access_token)
                 navigation.push("Home")
         }
        

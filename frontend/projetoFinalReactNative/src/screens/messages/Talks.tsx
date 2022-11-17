@@ -1,9 +1,13 @@
-import { View, Text, ImageBackground, TouchableOpacity} from 'react-native'
-import React,{FC, useState, useEffect} from 'react'
+import { View, Text, ImageBackground, TouchableOpacity, ScrollView, FlatList} from 'react-native'
+import React,{FC, useState, useEffect, useContext} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation, useRoute,  } from '@react-navigation/native';
+import { AuthContext } from '../../contexts/AuthProvider';
+import getProfile from '../../utils/getProfile';
+
+import MessageComponent from '../../components/messageItem/MessageComponent';
 
 const io = require('socket.io-client');
 const socket = io('http://192.168.1.107:5000');
@@ -30,14 +34,29 @@ type profile = {
 }
 
 const Talks  = () => {
+  const [profile, setProfile] = useState()
+  const {token}= useContext(AuthContext)
+  //getProfile
+  async function loadProfile(){        
+    const get_profile = await getProfile(token)
+      setProfile(get_profile)
+   }
+   useEffect (()=>{
+
+       loadProfile()
+   },[])
+
+   console.log(profile)
+
+
   const navigation = useNavigation()
   const route = useRoute()
   
  
-  console.log(route.params)
+
  
   useEffect(()=>{
-    const profile = route.params as profile 
+  
 
     // client-side
   socket.on("connect", () => {
@@ -59,7 +78,23 @@ socket.on("message", () => {
     <SafeAreaView style = {styles.container} >
       <View style = {styles.ViewBG}>
       <ImageBackground style={styles.background} source={require('../../assets/img/whitebg.jpg')}>
+      
+        <ScrollView  style={styles.containerMsg}  >
+       
+
+
+          <MessageComponent
+        id='2'
+        image_url=''
+        nome=''
+        />
+       
+      
+        </ScrollView>
+      
       </ImageBackground>
+      
+      
       </View>
       <View style={styles.messageView}></View>
       <View style={styles.sendView}>
