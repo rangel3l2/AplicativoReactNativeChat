@@ -11,20 +11,20 @@ interface MessageProps{
     id:string,
     image_url:string,
     dataTimeValue?:Date 
-    nome: string 
+    name: string 
 }
 
-const MessageComponent: React.FC<MessageProps> = (   {id='1', image_url, dataTimeValue, nome} ) =>
+const MessageComponent: React.FC<MessageProps> = (   {id='1', image_url, dataTimeValue, name} ) =>
 {
 
   return (
     <View style={styles.container}>
         <Text style={styles.textTitle}>
-            {nome || 'carlos'}
+            {name || 'carlos'}
 
         </Text>
-        <Image resizeMode='stretch' source={{uri: "data:image/jpg;base64," + data[0].image }} style={styles.imageMessage}/>
-       <Text style={styles.textTime}>ola</Text>
+        <Image resizeMode='stretch' source={{uri: "data:image/jpg;base64," + data[0].image_url }} style={styles.imageMessage}/>
+       <Text style={styles.textTime}>{'ola'}</Text>
  
 
 

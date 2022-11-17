@@ -7,15 +7,17 @@ const styles = StyleSheet.create({
       
        flex:1,
        flexDirection:'column',
-        width:200,       
+        width:windowWidth/1.5,       
         minHeight:windowHeight/2.6,
         margin: 20,
         
          justifyContent:'center',
          alignItems:'center',
-         backgroundColor:'#fff',
+         backgroundColor:'#292525',      
+         borderRadius:20,
+         borderWidth:5,
+         borderColor:'#292525',
       
-       
 
 
     },
@@ -32,17 +34,21 @@ const styles = StyleSheet.create({
 
     },
     textTitle:{
-        alignSelf:'flex-start',     
+        alignSelf:'baseline',     
         fontSize:15,
         fontWeight:'400', 
-        marginRight:10
+        marginLeft:20,
+        color:'#85140c',
        
     },
     textTime:{ 
         alignSelf:'flex-end',     
         fontSize:15,
         fontWeight:'400',
-        marginRight:10
+        marginRight:10,
+        color:'#9e8e8d',
+       
+
       
 
     }

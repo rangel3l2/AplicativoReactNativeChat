@@ -8,6 +8,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import getProfile from '../../utils/getProfile';
 
 import MessageComponent from '../../components/messageItem/MessageComponent';
+import MessageFlatList from '../../components/messageFlatList/messageFlatListRenderItem';
 
 const io = require('socket.io-client');
 const socket = io('http://192.168.1.107:5000');
@@ -79,7 +80,7 @@ socket.on("message", () => {
       <View style = {styles.ViewBG}>
       <ImageBackground style={styles.background} source={require('../../assets/img/whitebg.jpg')}>
       
-        <ScrollView  style={styles.containerMsg}  >
+        {/* <ScrollView  style={styles.containerMsg}  >
        
 
 
@@ -90,7 +91,10 @@ socket.on("message", () => {
         />
        
       
-        </ScrollView>
+        </ScrollView> */}
+        <MessageFlatList
+        />
+        
       
       </ImageBackground>
       
