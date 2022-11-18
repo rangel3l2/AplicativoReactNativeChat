@@ -2,7 +2,7 @@
   "expo": {
     "name": "projetofinal",
     "slug": "projetofinal",
-    "scheme": "com.rangel3l.projetofinal",
+    "scheme": "projetofinal",
     
     "plugins": [
       [
@@ -10,7 +10,11 @@
         {
           "appID": "1089348385307020",
           "clientToken": "6c84a747fb463bb82953fbd0f774b71e",
-          "displayName": "projetofinal"
+          "displayName": "projetofinal",
+          "scheme": "projetofinal",
+          "advertiserIDCollectionEnabled": false,
+          "autoLogAppEventsEnabled": false,
+          "isAutoInitEnabled": true
         }
       ]
    
@@ -46,6 +50,7 @@
       "bundleIdentifier": "com.rangel3l.projetofinal"
     },
     "android": {
+      
       "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

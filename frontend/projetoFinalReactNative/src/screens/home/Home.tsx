@@ -10,6 +10,9 @@ import MockData from '../../MockData/profile';
 import getProfile from '../../utils/getProfile';
 import { AuthContext } from '../../contexts/AuthProvider';
 
+import { data } from './../../MockData/mockedImage';
+import { MessageContext } from './../../contexts/Message';
+
 
 
 type Params = {
@@ -33,7 +36,13 @@ interface HomeProps {
 
 
 const Home  = () => {
+  const {messages,setMessages} = useContext(MessageContext)
+  useEffect(()=>{
+    setMessages(data)
 
+  })
+ 
+  // console.log("array mensagem",messages)
   const {token,setToken}= useContext(AuthContext)
   
   var ws = new WebSocket('http://192.168.1.107:5000')    
@@ -44,7 +53,7 @@ const Home  = () => {
       }
       ws.onmessage = (e) => {
         // a message was received
-        console.log(e.data);
+      //  console.log(e.data);
       }
   const [profile, setProfile] = useState({} as profile)
     const  nada = {

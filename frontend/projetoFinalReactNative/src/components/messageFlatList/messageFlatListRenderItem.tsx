@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, View } from 'react-native';
+import MessageContext from '../../contexts/Message';
 import { data } from '../../MockData/mockedImage';
 import MessageComponent from '../messageItem/MessageComponent';
+
+
+
 type message={
     id:string,
     image_url:string,
@@ -35,9 +39,11 @@ const renderItem = ({item})=>{
 
 
 const MessageFlatList: React.FC= () => {
+    const{messages}= useContext(MessageContext)
+   
   return( 
   <FlatList
-  data={data}
+  data={messages}
  renderItem={renderItem}
   keyExtractor={(item: MessageProps) => item.id}
    />);

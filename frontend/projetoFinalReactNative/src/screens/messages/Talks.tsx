@@ -6,9 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation, useRoute,  } from '@react-navigation/native';
 import { AuthContext } from '../../contexts/AuthProvider';
 import getProfile from '../../utils/getProfile';
-
-import MessageComponent from '../../components/messageItem/MessageComponent';
-import MessageFlatList from '../../components/messageFlatList/messageFlatListRenderItem';
+import MessageFlatList from '../../components/messageFlatList/MessageFlatListRenderItem';
 
 const io = require('socket.io-client');
 const socket = io('http://192.168.1.107:5000');
@@ -47,7 +45,7 @@ const Talks  = () => {
        loadProfile()
    },[])
 
-   console.log(profile)
+   //console.log(profile)
 
 
   const navigation = useNavigation()

@@ -3,7 +3,7 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": null,
+  "urlRandomness": "55-z23",
   "https": false,
   "scheme": "com.rangel3l.projetofinal",
   "devClient": false
