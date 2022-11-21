@@ -1,78 +1,86 @@
-import { View, Text, ImageBackground, TouchableOpacity, ScrollView, FlatList} from 'react-native'
-import React,{FC, useState, useEffect, useContext} from 'react'
+import { View, Text, ImageBackground, TouchableOpacity} from 'react-native'
+import React,{FC, useEffect, useContext} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation, useRoute,  } from '@react-navigation/native';
-import { AuthContext } from '../../contexts/AuthProvider';
-import getProfile from '../../utils/getProfile';
 import MessageFlatList from '../../components/messageFlatList/MessageFlatListRenderItem';
+import { RootStackParmams } from '../../navigation/StackNavigator';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { DataContext } from '../../contexts/DataContext';
 
-const io = require('socket.io-client');
-const socket = io('http://192.168.1.107:5000');
+// const io = require('socket.io-client');
+// const socket = io('http://192.168.1.107:5000');
 
-
-type profile = {
-  email : string;
-  family_name: string;
-  given_name: string;
-  locale: string;
-  name: string;
-  picture: string;
-
-
-}
- type message ={
-  nome: string,
-  url:string
-  time?: Date,
-  
-
-
-
+type Params = {
+  takepicture : boolean;
+  image_url : string;
 }
 
-const Talks  = () => {
-  const [profile, setProfile] = useState()
-  const {token}= useContext(AuthContext)
-  //getProfile
-  async function loadProfile(){        
-    const get_profile = await getProfile(token)
-      setProfile(get_profile)
-   }
-   useEffect (()=>{
 
-       loadProfile()
-   },[])
+const Talks =() => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParmams>>()
+  const route = useRoute() 
+  const data = route?.params as Params; 
 
-   //console.log(profile)
+  const {messages, setMessages, profile} = useContext(DataContext)
+  const date = new Date()
+  
+   
+       
+      
+   useEffect(()=>{
+
+   data?.takepicture&&setMessages(
+      [...messages,{
+        id : (messages?.length +3).toString(),
+        name: profile?.name,
+        image_url : data?.image_url.toString(),
+        dateTime : date.toString()
+
+      }]
+
+   )},[])
 
 
-  const navigation = useNavigation()
-  const route = useRoute()
+   /**@setMessages */
+   
+  
+     
+
+
   
  
 
  
-  useEffect(()=>{
+ 
+   /**@clienteSide websocket to client*/
+
+
+// socket.on("connect", () => {
+//   socket.send("User connected!")
+// //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+// });
+// socket.on("connect", (data) => {
+//   console.log(data)
+
+// //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+// });
+// socket.on("message", () => {
+ 
+//   socket.emit('sou emo')
+// //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+// });
+
+// socket.on("message", (data) => {
+
+//   console.log('texto recebido'+data)
+// //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+// });
+
+
   
 
-    // client-side
-  socket.on("connect", () => {
-    
-  //console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-});
-socket.on("message", () => {
-  socket.send("User connected!")
-//console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-});
-
-  },[])
-  
- 
-
- 
- 
   return (
     <SafeAreaView style = {styles.container} >
       <View style = {styles.ViewBG}>
@@ -101,7 +109,7 @@ socket.on("message", () => {
       <View style={styles.messageView}></View>
       <View style={styles.sendView}>
       {/* <Camera  type={type}> */}
-      <TouchableOpacity onPress={()=>{navigation.navigate("Camera" as never)}} style={styles.cameraView}>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Camera')}} style={styles.cameraView}>
       
 
       

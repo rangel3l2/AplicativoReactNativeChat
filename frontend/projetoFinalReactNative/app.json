@@ -2,7 +2,7 @@
   "expo": {
     "name": "projetofinal",
     "slug": "projetofinal",
-    "scheme": "projetofinal",
+    "scheme": "com.rangel3l.projetofinal",
     
     "plugins": [
       [
@@ -10,11 +10,8 @@
         {
           "appID": "1089348385307020",
           "clientToken": "6c84a747fb463bb82953fbd0f774b71e",
-          "displayName": "projetofinal",
-          "scheme": "projetofinal",
-          "advertiserIDCollectionEnabled": false,
-          "autoLogAppEventsEnabled": false,
-          "isAutoInitEnabled": true
+          "displayName": "projetofinal"
+         
         }
       ]
    

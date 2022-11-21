@@ -1,14 +1,23 @@
 import styles from "../camera/styles";
 import { View, Text, TouchableOpacity, ImageBackground} from 'react-native'
-import React from 'react'
 import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonCustom from "../../components/button/Button";
 import { useNavigation } from "@react-navigation/native";
-export default function PrintedCamera({photo, setPhoto}) {
-    const navigation = useNavigation()
-    const sendPic = () =>{
-    navigation.navigate('Messages',{data:"data:image/jpg;base64," + photo.base64})
+import { DataContext } from '../../contexts/DataContext';
+import React, { useContext, useState } from 'react';
+import { NativeStackNavigationProp} from "@react-navigation/native-stack";
+import { RootStackParmams } from "../../navigation/StackNavigator";
 
+export default function PrintedCamera({photo, setPhoto}) {
+
+    const [profile, setProfile] = useState()
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParmams>>()
+    const sendPic = () =>{
+    // navigation.navigate('Home',{image_url: photo.base64, takepicture: true})    
+    navigation.navigate('Root', {
+      screen: 'Conversas',
+      params: {image_url: photo.base64, takepicture: true},
+    });
    }
       
   return (
@@ -23,7 +32,7 @@ export default function PrintedCamera({photo, setPhoto}) {
     </TouchableOpacity >
           
            <ButtonCustom
-          params= {"data:image/jpg;base64," + photo.base64}
+          // params= {"data:image/jpg;base64," + photo.base64}
           onPress = {sendPic}
           title = {''}
           size={60}

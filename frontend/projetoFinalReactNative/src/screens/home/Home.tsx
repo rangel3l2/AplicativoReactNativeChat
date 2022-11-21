@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native'
 import React, { FC, useContext, useEffect, useState } from 'react'
+
 import { useRoute } from '@react-navigation/native';
 import BottomNavigator from '../../navigation/BottomNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,54 +12,45 @@ import getProfile from '../../utils/getProfile';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 import { data } from './../../MockData/mockedImage';
-import { MessageContext } from './../../contexts/Message';
+
+import { ProfileInterface } from './../../interfaces/UserIntaces';
+import { DataContext } from './../../contexts/DataContext';
 
 
 
 type Params = {
   token : string
 }
-type profile = {
-  email : string;
-  family_name: string;
-  given_name: string;
-  locale: string;
-  name: string;
-  picture: string;
 
-
-}
 interface HomeProps {
-  profile: profile,
+  profile: ProfileInterface ;
  
 }
 
 
 
 const Home  = () => {
-  const {messages,setMessages} = useContext(MessageContext)
-  useEffect(()=>{
-    setMessages(data)
+  // const {messages,setMessages} = useContext(MessageContext)
+  // useEffect(()=>{
+  //   setMessages(data)
 
-  })
+  // })
  
   // console.log("array mensagem",messages)
   const {token,setToken}= useContext(AuthContext)
   
-  var ws = new WebSocket('http://192.168.1.107:5000')    
+  // var ws = new WebSocket('http://192.168.1.107:5000')    
     
-    ws.onopen = () => {
-        // connection opened
-        ws.send('User connected!');  // send a message
-      }
-      ws.onmessage = (e) => {
-        // a message was received
-      //  console.log(e.data);
-      }
-  const [profile, setProfile] = useState({} as profile)
-    const  nada = {
-        token : 'nada'
-    }
+  //   ws.onopen = () => {
+  //       // connection opened
+  //       ws.send('User connected!');  // send a message
+  //     }
+  //     ws.onmessage = (e) => {
+  //       // a message was received
+  //     //  console.log(e.data);
+  //     }
+  const {profile, setProfile} = useContext(DataContext)
+  
       const route = useRoute()
       
       //const {token} =route?.params as Params ?route?.params as Params :  paramsGoogle as Params ;  
@@ -72,16 +64,18 @@ const Home  = () => {
     useEffect (()=>{
 
         loadProfile()
+  
     },[])
      
       return (
-        
+        <>
+         
           <BottomNavigator 
-          profile = {profile}
+          
           
           
           />
-     
+     </>
       );
     }
 

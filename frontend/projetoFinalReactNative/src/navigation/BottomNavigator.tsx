@@ -16,14 +16,10 @@ type profile = {
 type Params = {
   token : string;
 }
-interface HomeProps {
-  profile: profile;
- 
-}
 
 const Tab = createBottomTabNavigator();
 
-const BottomNavigator : FC<HomeProps> = ({profile}) => {
+const BottomNavigator : FC = () => {
   return(
     <Tab.Navigator
     initialRouteName='Conversas'
@@ -36,7 +32,7 @@ const BottomNavigator : FC<HomeProps> = ({profile}) => {
       
       name="Conversas" 
       component={Talks}
-      initialParams = {profile}
+      
       options=
       {{        
         headerShown: false,        
@@ -54,8 +50,7 @@ const BottomNavigator : FC<HomeProps> = ({profile}) => {
    
       <Tab.Screen 
       name="Perfil"       
-      component={Profile}
-      initialParams = {profile}
+      component={Profile}     
       
       options=
       {{

@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
-import React,{useEffect, useState, FC, } from 'react';
+import React,{useEffect, useState, FC, useContext, } from 'react';
 import { Text, View, Image, ImageBackground,TouchableOpacity} from 'react-native';
 import stylesGeneral from '../../components/auth/styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,6 +7,7 @@ import { Card } from '@rneui/themed';
 import styles from './styles'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts, Roboto_700Bold, Roboto_400Regular, Roboto_100Thin } from '@expo-google-fonts/roboto';
+import { DataContext } from './../../contexts/DataContext';
 
 type profile = {
   email : string;
@@ -18,18 +19,12 @@ type profile = {
 
 
 }
-type Params = {
-  token : string;
-}
-interface HomeProps {
-  
-  params: profile;
- 
-}
+
 const Profile = () => {
+  const {profile} = useContext(DataContext)
   const navigation = useNavigation()
   const route = useRoute()
-  const profile = route.params as profile
+ 
   let [fontsLoaded] = useFonts({
     Roboto_700Bold,
     Roboto_400Regular,

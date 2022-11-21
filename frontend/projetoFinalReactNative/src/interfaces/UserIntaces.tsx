@@ -1,6 +1,6 @@
 
 
-export interface Profile  {
+export interface ProfileInterface  {
   email : string;
   family_name: string;
   given_name: string;

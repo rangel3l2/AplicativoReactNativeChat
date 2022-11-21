@@ -6,7 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import PrintedCamera from '../printedCamera/PrintedCamera';
 
 export default function CameraExpo({navigation}) {
-  let cameraRef = useRef()
+  let cameraRef = useRef() as any
  
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -34,7 +34,8 @@ export default function CameraExpo({navigation}) {
 
   async function takePic() {
     let options = {
-      quality: 1,
+      quality: 0.5, skipProcessing: true, fixOrientation: false,
+      // quality: 1,
       base64: true,
       exif:false,
     }

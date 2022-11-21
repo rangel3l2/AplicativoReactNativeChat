@@ -1,18 +1,14 @@
 import React, { useContext } from 'react';
 import { FlatList, View } from 'react-native';
-import MessageContext from '../../contexts/Message';
+import MessageContext from '../../contexts/DataContext';
 import { data } from '../../MockData/mockedImage';
 import MessageComponent from '../messageItem/MessageComponent';
 
 
 
-type message={
-    id:string,
-    image_url:string,
-    dataTimeValue?:Date 
-    name: string   
+ 
     
-}
+
 export interface Props {
     message: MessageProps[];
   }
@@ -20,7 +16,7 @@ export interface Props {
 interface MessageProps{
     id:string,
     image_url:string,
-    dataTimeValue?:Date 
+    dataTime?:Date 
     name: string 
 }
 
@@ -31,6 +27,7 @@ const renderItem = ({item})=>{
             id={item.id}
             image_url={item.image_url}         
             name={item.name}
+            dateTime = {item.dateTime}
 
 
             />

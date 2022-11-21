@@ -10,21 +10,21 @@ import styles from './styles';
 interface MessageProps{
     id:string,
     image_url:string,
-    dataTimeValue?:Date 
+    dateTime?:string 
     name: string 
 }
 
-const MessageComponent: React.FC<MessageProps> = (   {id='1', image_url, dataTimeValue, name} ) =>
+const MessageComponent: React.FC<MessageProps> = (   {image_url, dateTime, name, id} ) =>
 {
 
   return (
-    <View style={styles.container}>
+    image_url&&dateTime&&image_url&&name&&<View style={styles.container}>
         <Text style={styles.textTitle}>
-            {name || 'carlos'}
+            {name}
 
         </Text>
-        <Image resizeMode='stretch' source={{uri: "data:image/jpg;base64," + data[0].image_url }} style={styles.imageMessage}/>
-       <Text style={styles.textTime}>{'ola'}</Text>
+        <Image resizeMode='stretch' source={{uri: "data:image/jpg;base64," + image_url }} style={styles.imageMessage}/>
+       <Text style={styles.textTime}>{dateTime}</Text>
  
 
 

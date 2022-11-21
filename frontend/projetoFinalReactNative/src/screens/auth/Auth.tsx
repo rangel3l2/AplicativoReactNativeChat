@@ -9,10 +9,12 @@ import {firebase} from "../../../config";
 import { LoginManager, AccessToken } from "react-native-fbsdk-next";
 import 'expo-dev-client'
 import Logo from "../../components/auth/Logo";
-
+import { NativeStackNavigationProp} from "@react-navigation/native-stack";
 
 import authWithGoogle from "../../utils/authWithGoogle";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { useNavigation } from "@react-navigation/native";
+import { RootStackParmams } from "../../navigation/StackNavigator";
 type AuthResponse = {
     type: string
     params : {
@@ -23,7 +25,8 @@ type AuthResponse = {
 
 
 
-const Auth = ({navigation})=>{
+const Auth = ()=>{
+const navigation = useNavigation<NativeStackNavigationProp<RootStackParmams>>()
 const {token,setToken}= useContext(AuthContext)
   //facebook login
 const [initializing, setInitializing] = useState(true)
@@ -100,7 +103,7 @@ return subscriber;
         if(type === 'success'){
                 
                  setToken(params.access_token)
-                navigation.push("Home")
+                navigation.navigate('Home')
         }
        
     }

@@ -1,25 +1,26 @@
  import * as  React from 'react'
- import { StatusBar } from 'react-native'
  import { NavigationContainer } from "@react-navigation/native";
  import StackNavigator from "./src/navigation/StackNavigator";
  import AuthProvider from './src/contexts/AuthProvider';
- import { MessageProvider } from './src/contexts/Message';
- const App =()=>{
+ import { DataProvider } from './src/contexts/DataContext';
+
+const App =()=>{
   
     
    return(
   /**@return é JSX*/
       
       <AuthProvider>
-      <MessageProvider>
+      <DataProvider>
       <NavigationContainer>
          <StackNavigator />
+       
            
      
        
      
       </NavigationContainer>
-      </MessageProvider>
+      </DataProvider>
       </AuthProvider>
    
    );
