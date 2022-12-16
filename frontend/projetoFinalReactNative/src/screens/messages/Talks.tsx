@@ -8,9 +8,12 @@ import { RootStackParmams } from '../../navigation/StackNavigator';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { DataContext } from '../../contexts/DataContext';
 import MessageFlatList from '../../components/messageFlatList/MessageFlatListRenderItem';
+import { useState } from 'react';
+import { Message } from '../../interfaces/MessageInterface';
+import uuid from 'react-native-uuid';
 
-const io = require('socket.io-client');
-const socket = io('http://10.8.38.2:5000');
+const io = require('socket.io-client')
+const socket = io('http://192.168.1.107:5000');
 
 type Params = {
   takepicture : boolean;
@@ -24,6 +27,7 @@ const Talks =() => {
   const data = route?.params as Params; 
 
   const {messages, setMessages, profile} = useContext(DataContext)
+  const [message, setMessage] =  useState<object>({}) 
   const date = new Date()
   
    
@@ -31,18 +35,28 @@ const Talks =() => {
       
    useEffect(()=>{
 
-   data?.takepicture&&setMessages(
-      [...messages,{
-        id : (messages?.length +3).toString(),
-        name: profile?.name,
-        image_url : data?.image_url.toString(),
-        dateTime : date.toString()
+  //  data?.takepicture&&setMessages(
+  //     [...messages,{
+  //       id : (messages?.length +3).toString(),
+  //       name: profile?.name,
+  //       image_url : data?.image_url.toString(),
+  //       dateTime : date.toString()
 
-      }]
-     
-   )},[])
+  //     }]
+     setMessage(
+      {
+              id : uuid.v4(),
+              name: profile?.name,
+              image_url : data?.image_url.toString(),
+              dateTime : date.toString()
+      
+            }
+     )
+    
+  //  )
+  },[])
   
-
+  //console.log('message',message)
    /**@setMessages */
    
   
@@ -55,7 +69,7 @@ const Talks =() => {
  
  
    /**@clienteSide websocket to client*/
-
+if(data?.takepicture== true)
 useEffect(()=>{
 socket.on("connect", () => {
    socket.send("User connected!")
@@ -64,23 +78,27 @@ console.log(socket.id); // x8WIv7-mJelg7on_ALbx
  socket.on("connect", (data) => {
    console.log(data)
 
-console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+// console.log(socket.id); // x8WIv7-mJelg7on_ALbx
  });
  socket.on("message", () => {
- 
-  socket.emit('message',messages)
+ // console.log('mensagem antiga',message)
+  socket.emit('message',{"data":message})
 console.log(socket.id); // x8WIv7-mJelg7on_ALbx
 });
 
- socket.on("message", (data) => {
+ socket.on("message", (data : Message) => {
 
-   console.log('texto recebido'+data)
+   console.log('texto recebido'+data.name)
 
-  setMessages(data)
+   setMessages([...messages,{
+        id : data.id ,
+          name: data.name,     
+         dateTime : data.dateTime
+   }])
 
  });
 
-},[]);
+},[message]);
   
 
   return (

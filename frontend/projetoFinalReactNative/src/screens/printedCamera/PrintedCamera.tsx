@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, {useState } from 'react';
 import { NativeStackNavigationProp} from "@react-navigation/native-stack";
 import { RootStackParmams } from "../../navigation/StackNavigator";
-import ButtonCustom from "../../components/button/button";
+import ButtonCustom from "../../components/button/Button";
 
 export default function PrintedCamera({photo, setPhoto}) {
 

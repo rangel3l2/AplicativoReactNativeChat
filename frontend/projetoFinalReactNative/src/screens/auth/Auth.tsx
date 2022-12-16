@@ -4,17 +4,20 @@ import styles from "../../components/auth/styles";
 import EnviarCounteudo from "../../components/auth/EnviarCounteudo";
 import FormCadastro from "../../components/auth/FormCadastro";
 import LoginRedeSocial from "../../components/auth/LoginRedeSocial";
-import {getAuth, FacebookAuthProvider,signInWithCredential } from 'firebase/auth'
-import {firebase} from "../../../config";
-import { LoginManager, AccessToken } from "react-native-fbsdk-next";
-import 'expo-dev-client'
+// import {getAuth, FacebookAuthProvider,signInWithCredential } from 'firebase/auth'
+// import {firebase} from "../../../config";
+// import { LoginManager, AccessToken } from "react-native-fbsdk-next";
+// import 'expo-dev-client'
 import Logo from "../../components/auth/Logo";
 import { NativeStackNavigationProp} from "@react-navigation/native-stack";
-
+import {ImageBackground } from 'react-native'
 import authWithGoogle from "../../utils/authWithGoogle";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParmams } from "../../navigation/StackNavigator";
+
+
+
 type AuthResponse = {
     type: string
     params : {
@@ -40,9 +43,9 @@ const [user1, setUser1] = useState()
 }
 useEffect(()=>{
 
-const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged)
+// const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged)
 
-return subscriber;
+// return subscriber;
 
 },[])
  const signWithFb =  async() =>{
@@ -114,7 +117,7 @@ return subscriber;
     return (
     
     <SafeAreaView  style = {styles.container}>
-    
+            <ImageBackground source={require('../../assets/img/blue-gradient.jpg')}>
          <Logo/>
          <LoginRedeSocial
          handleSignIn = {handleSignIn}
@@ -131,7 +134,7 @@ return subscriber;
            
            />
       
-      
+      </ImageBackground>
     </SafeAreaView>
         
     )
