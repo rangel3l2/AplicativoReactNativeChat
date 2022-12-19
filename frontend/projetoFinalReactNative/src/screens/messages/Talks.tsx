@@ -11,6 +11,7 @@ import MessageFlatList from '../../components/messageFlatList/MessageFlatListRen
 import { useState } from 'react';
 import { Message } from '../../interfaces/MessageInterface';
 import uuid from 'react-native-uuid';
+import { generateRandom } from 'expo-auth-session/build/PKCE';
 
 const io = require('socket.io-client')
 const socket = io('http://192.168.1.107:5000');
@@ -19,6 +20,11 @@ type Params = {
   takepicture : boolean;
   image_url : string;
 }
+ type Data   ={
+  obj : {
+    message : Message
+  }
+ }
 
 
 const Talks =() => {
@@ -30,28 +36,12 @@ const Talks =() => {
   const [message, setMessage] =  useState<object>({}) 
   const date = new Date()
   
-   
+ 
        
       
    useEffect(()=>{
 
-  //  data?.takepicture&&setMessages(
-  //     [...messages,{
-  //       id : (messages?.length +3).toString(),
-  //       name: profile?.name,
-  //       image_url : data?.image_url.toString(),
-  //       dateTime : date.toString()
-
-  //     }]
-     setMessage(
-      {
-              id : uuid.v4(),
-              name: profile?.name,
-              image_url : data?.image_url.toString(),
-              dateTime : date.toString()
-      
-            }
-     )
+ 
     
   //  )
   },[])
@@ -69,8 +59,16 @@ const Talks =() => {
  
  
    /**@clienteSide websocket to client*/
-if(data?.takepicture== true)
+if(data?.takepicture== true){
 useEffect(()=>{
+   setMessage(
+          {
+              id : generateRandom(10).toString(),
+              name: profile?.name,
+              image_url : data?.image_url.toString(),
+              dateTime : date.toString()
+      
+            })
 socket.on("connect", () => {
    socket.send("User connected!")
 console.log(socket.id); // x8WIv7-mJelg7on_ALbx
@@ -80,27 +78,30 @@ console.log(socket.id); // x8WIv7-mJelg7on_ALbx
 
 // console.log(socket.id); // x8WIv7-mJelg7on_ALbx
  });
- socket.on("message", () => {
+ socket.on("message", (dataMessage : Data) => {
  // console.log('mensagem antiga',message)
-  socket.emit('message',{"data":message})
+  console.log('texto recebido '+dataMessage.obj.message)
+  setMessages([dataMessage.obj.message, ...messages])
+  socket.emit('message',JSON.stringify(message))
+  
 console.log(socket.id); // x8WIv7-mJelg7on_ALbx
 });
 
- socket.on("message", (data : Message) => {
+//  socket.on("message", (data : Data) => {
 
-   console.log('texto recebido'+data.name)
+//    console.log('texto recebido'+data.obj.message)
 
-   setMessages([...messages,{
-        id : data.id ,
-          name: data.name,     
-         dateTime : data.dateTime
-   }])
+  //  setMessages([...messages,{
+  //       id : data.id ,
+  //         name: data.name,     
+  //        dateTime : data.dateTime
+  //  }])
 
- });
+//  });
 
-},[message]);
+},[]);
   
-
+}
   return (
     <SafeAreaView style = {styles.container} >
       <View style = {styles.ViewBG}>
