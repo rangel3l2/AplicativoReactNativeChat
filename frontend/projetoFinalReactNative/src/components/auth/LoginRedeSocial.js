@@ -3,7 +3,7 @@ import React from 'react'
 import BtnRedeSocial from './BtnRedeSocial'
 import styles from './styles'
 
-const LoginRedeSocial = ({handleSignIn, logInFacebook}) => {
+const LoginRedeSocial = ({handleSignIn}) => {
   return (
    <View style = {styles.buttonSocialMedia}>
     {/* <BtnRedeSocial

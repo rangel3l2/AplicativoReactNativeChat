@@ -37,9 +37,9 @@ const [user1, setUser1] = useState()
 
  function onAuthStateChanged(user1){
     setUser1(user1)
-    
+
     console.log('ola mundo')
-    
+
 }
 useEffect(()=>{
 
@@ -48,46 +48,46 @@ useEffect(()=>{
 // return subscriber;
 
 },[])
- const signWithFb =  async() =>{
-    try{
-        await LoginManager.logInWithPermissions(['public_profile','email'])
-        const data = await AccessToken.getCurrentAccessToken()
-        if(!data){
-            return;
-        }
-    
-    const facebookCredential = FacebookAuthProvider.credential(data.accessToken)
-    const auth = getAuth()
-    const response = await signInWithCredential(auth, facebookCredential)
-    await signInWithCredential(firebase.auth(), facebookCredential)
-    console.log(response)
+//  const signWithFb =  async() =>{
+//     try{
+//         await LoginManager.logInWithPermissions(['public_profile','email'])
+//         const data = await AccessToken.getCurrentAccessToken()
+//         if(!data){
+//             return;
+//         }
 
-    }catch(e){
-        console.log(e)
-    }
+//     const facebookCredential = FacebookAuthProvider.credential(data.accessToken)
+//     const auth = getAuth()
+//     const response = await signInWithCredential(auth, facebookCredential)
+//     await signInWithCredential(firebase.auth(), facebookCredential)
+//     console.log(response)
 
-    const signOut = async () =>{
+//     }catch(e){
+//         console.log(e)
+//     }
 
-        try{
-            await firebase.auth().signOut()
+//     const signOut = async () =>{
 
-        }catch(e){
-            console.log(e)
-        }
+//         try{
+//             await firebase.auth().signOut()
+
+//         }catch(e){
+//             console.log(e)
+//         }
 
 
-    }
-    if(initializing) return null
-    if(!user1){
-        console.log('sign in with facebook')
-    }
-}
+//     }
+//     if(initializing) return null
+//     if(!user1){
+//         console.log('sign in with facebook')
+//     }
+// }
 
 
 
     async function logIn() {
      alert('ola mundo')
-      
+
       }
     //google login
     async function handleSignIn(){
@@ -104,39 +104,39 @@ useEffect(()=>{
         const auth_session = await authWithGoogle() as AuthResponse;
         const {type, params} = await auth_session;
         if(type === 'success'){
-                
+
                  setToken(params.access_token)
                 navigation.navigate('Home')
         }
-       
+
     }
 
     //auth minha
     const [user, setUser] = useState(  {nome: '', senha: '', login: '', telefone: ''} )
 
     return (
-    
+
     <SafeAreaView  style = {styles.container}>
             <ImageBackground source={require('../../assets/img/blue-gradient.jpg')}>
          <Logo/>
          <LoginRedeSocial
          handleSignIn = {handleSignIn}
-         logInFacebook = {signWithFb}
+        // logInFacebook = {signWithFb}
          />
          <FormCadastro
          setUser = {setUser}
          user = {user}
-         
+
          />
          <EnviarCounteudo
          navigation = {navigation}
            //caminhos
-           
+
            />
-      
+
       </ImageBackground>
     </SafeAreaView>
-        
+
     )
 }
 
