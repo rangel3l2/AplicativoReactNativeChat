@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, {useContext, useState } from 'react';
 import { NativeStackNavigationProp} from "@react-navigation/native-stack";
 import { RootStackParmams } from "../../navigation/StackNavigator";
-import ButtonCustom from "../../components/button/Button";
+import ButtonCustom from "../../components/button/ButtonCustom";
 import DataContext from "../../contexts/DataContext";
 import { generateRandom } from "expo-auth-session/build/PKCE";
 import { data } from './../../MockData/mockedImage';
@@ -31,7 +31,7 @@ export default function PrintedCamera({photo, setPhoto}) {
    const setMessageFromApiAsync = async () => {
     try {
       const response = await fetch(
-    'http://192.168.1.107:5000/message', {
+    'http://10.8.38.198:5000/message', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

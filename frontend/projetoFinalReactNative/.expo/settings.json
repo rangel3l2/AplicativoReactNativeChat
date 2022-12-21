@@ -5,6 +5,6 @@
   "minify": false,
   "urlRandomness": "55-z23",
   "https": false,
-  "scheme": "com.rangel3l.projetofinal",
+  "scheme": "exp+projetofinal",
   "devClient": false
 }
